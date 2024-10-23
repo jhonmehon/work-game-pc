@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  ubuntu:
+    image: ubuntu:latest
+    container_name: ubuntu_container
+    ports:
+      - "8080:8080"
+    volumes:
+      - storage:/  # Docker volume for the root filesystem
+      - home:/home/user  # Docker volume for the home directory
+      - ./data:/data  # Local data directory for file transfer
+    tty: true
+    stdin_open: true
+    command: /bin/bash
+
+volumes:
+  storage:  # Define the volume for the root filesystem
+  home:  # Define the volume for the home directory
